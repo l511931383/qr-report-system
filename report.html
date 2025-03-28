@@ -127,7 +127,9 @@
             console.log('正在获取报告数据，报告编号：', reportNumber);
 
             try {
-                const response = await fetch(`http://localhost:5000/get_report/${reportNumber}`);
+                // 获取后端API地址
+                const apiBaseUrl = 'https://your-username.pythonanywhere.com';
+                const response = await fetch(`${apiBaseUrl}/get_report/${reportNumber}`);
                 const data = await response.json();
 
                 if (data.status === 'success') {
