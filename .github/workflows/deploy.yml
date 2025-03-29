@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # 如果项目不需要Node.js构建，可以删除这个步骤
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          publish_dir: .                      # 发布当前目录
+          publish_branch: gh-pages            # 推送到gh-pages分支
+          force_orphan: true                  # 强制清空旧文件
+          commit_message: 'Deploy to GitHub Pages'
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+          # 排除不需要部署的文件（使用换行符分隔）
+          exclude_assets: |
+            **.py
+            **.pyc
+            **.pyo
+            **.pyd
+            .Python
+            env/
+            venv/
+            .env
+            .venv
+            **.log
+            test_data.json
+            .gitignore
+            requirements.txt
+            database/
+            wsgi.py
