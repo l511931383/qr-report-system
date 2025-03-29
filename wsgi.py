@@ -11,4 +11,4 @@ from dotenv import load_dotenv
 load_dotenv(os.path.join(project_home, '.env'))
 
 # 导入Flask应用
-from app import app as application
+from flask_app import app as application

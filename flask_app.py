@@ -90,8 +90,10 @@ def get_report(report_number):
         
         return jsonify({
             'status': 'success',
-            'data': report_data,
-            'qr_code_url': qr_code_url
+            'data': {
+                'report': report_data,
+                'qr_code_url': qr_code_url
+            }
         })
         
     except Exception as e:

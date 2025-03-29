@@ -22,4 +22,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
           publish_branch: gh-pages
-          exclude_assets: '**.py,**.pyc,**.pyo,**.pyd,.Python,env/,venv/,.env,.venv,**.log,test_data.json,.gitignore,requirements.txt'
+          exclude_assets: '**.py,**.pyc,**.pyo,**.pyd,.Python,env/,venv/,.env,.venv,**.log,test_data.json,.gitignore,requirements.txt,database/,wsgi.py'
+          include_dotfiles: true
