@@ -24,3 +24,10 @@ jobs:
           publish_branch: gh-pages
           exclude_assets: '**.py,**.pyc,**.pyo,**.pyd,.Python,env/,venv/,.env,.venv,**.log,test_data.json,.gitignore,requirements.txt,database/,wsgi.py'
           include_dotfiles: true
+          force_orphan: true
+          commit_message: 'Deploy to GitHub Pages'
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          full_commit_message: 'Deploy to GitHub Pages'
+          tag_name: ''
+          tag_message: ''
