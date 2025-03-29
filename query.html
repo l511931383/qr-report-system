@@ -73,10 +73,27 @@
             }
             
             // 获取后端API地址
-            const apiBaseUrl = 'https://l511931383.pythonanywhere.com'; // 使用PythonAnywhere域名作为API基础地址
+            const apiBaseUrl = 'https://l511931383.pythonanywhere.com';
             
-            // 跳转到报告页面
-            window.location.href = `report.html?number=${reportNumber}`;
+            // 调用后端API验证报告是否存在
+            fetch(`${apiBaseUrl}/get_report/${reportNumber}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('报告不存在');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.status === 'success' && data.data.report) {
+                        // 报告存在，跳转到报告页面
+                        window.location.href = `report.html?number=${reportNumber}`;
+                    } else {
+                        throw new Error('获取报告数据失败');
+                    }
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
         });
     </script>
 </body>
