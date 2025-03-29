@@ -1,6 +1,0 @@
-Flask==2.3.3
-requests==2.31.0
-pytz==2023.3
-python-dotenv==1.0.0
-flask-cors==4.0.0
-airtable-python-wrapper==0.15.3
